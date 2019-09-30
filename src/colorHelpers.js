@@ -22,7 +22,7 @@ const generatePalette = starterPalette => {
                 name: `${color.name} ${levels[i]}`,
                 id: color.name.toLowerCase().replace(/ /g, '-'),
                 hex: scale[i],
-                rbg: chroma(scale[i]).css(),
+                rgb: chroma(scale[i]).css(),
                 rgba: chroma(scale[i]).css().replace("rgb", "rgba").replace(")", ",1.0)")
             })
         }

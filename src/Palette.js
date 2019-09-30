@@ -5,25 +5,36 @@ import './palette.css'
 
 class Palette extends Component {
     state = {
-        level: 500
+        level: 500,
+        format: 'hex'
     }
 
     changeLevel = level => {
         this.setState({ level })
     }
 
+    changeFormat = val => {
+        this.setState({ format: val })
+    }
+
     render() {
         const { colors } = this.props.palette
-        const { level } = this.state
+        const { level, format } = this.state
         return (
             <div className="palette">
             <Navbar
                 level={level}
                 changeLevel={this.changeLevel}
+                handleChange={this.changeFormat}
             />
                 <div className="palette-colors">
                     {colors[level].map( color => {
-                        return <ColorBox background={color.hex} name={color.name} />
+                        return (
+                            <ColorBox
+                                background={color[format]}
+                                name={color.name}
+                            />
+                        )
                     })}
                 </div>
             {/* Footer eventually */}
